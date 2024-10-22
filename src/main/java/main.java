@@ -97,16 +97,18 @@ public class main {
                     coleccion.mostrarSellos();
                     break;
                 case 5:
-                    System.out.println("Precio total de la colección: " + coleccion.obtenerPrecioTotal());
+                    System.out.println("--- Precio Colección ---");
+                    System.out.println("El precio total de la colección es de: " + coleccion.obtenerPrecioTotal());
                     break;
                 case 6:
-                    System.out.println("Rareza media de la colección: " + coleccion.obtenerRarezaMedia());
+                    System.out.println("--- Rareza Media ---");
+                    System.out.println("La rareza media de la colección es de: " + coleccion.obtenerRarezaMedia());
                     break;
                 case 0:
-                    System.out.println("Saliendo...");
+                    System.out.println("Saliendo del programa...");
                     break;
                 default:
-                    System.out.println("Opción no válida. Intente de nuevo.");
+                    System.out.println("Opción no válida. Por favor, intentelo de nuevo.");
             }
         } while (opcion != 0);
 
