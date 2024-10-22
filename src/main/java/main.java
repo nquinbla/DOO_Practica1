@@ -13,6 +13,7 @@ public class main {
 
         do {
             System.out.println("---------- MENÚ ----------");
+            System.out.println("Bienvenido al programa de colección de monedas y sellos, por favor seleccione una opción:");
             System.out.println("1). Añadir una nueva moneda");
             System.out.println("2). Añadir un nuevo sello");
             System.out.println("3). Mostrar todas las monedas");
