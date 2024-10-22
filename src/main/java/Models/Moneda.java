@@ -2,11 +2,11 @@ package Models;
 
 public class Moneda extends ElementoColeccionable {
     // [1] Atributos de la clase Moneda
-    private String composicion;
-    private double peso;
-    private double diametro;
-    private double grosor;
-    private EstadoConservacion estadoConservacion;
+    private String composicion; // Aleación de la moneda
+    private double peso; // Peso de la moneda en gramos
+    private double diametro; // Diámetro de la moneda en milímetros
+    private double grosor; // Grosor de la moneda en milímetros
+    private EstadoConservacion estadoConservacion; // Estado de conservación de la moneda
 
     // [2] Constructor de la clase Moneda
     public Moneda(String pais, String autoridadGobernante, int annus, double valor, String unidadMonetaria, int rareza, double precio, String composicion, double peso, double diametro, double grosor, EstadoConservacion estadoConservacion) throws IllegalArgumentException {

@@ -43,13 +43,13 @@ public class main {
                     System.out.print("Ingrese el precio: ");
                     double precio = scanner.nextDouble();
                     scanner.nextLine(); // Consumir la nueva línea
-                    System.out.print("Ingrese la composición: ");
+                    System.out.print("Ingrese la composición o aleación: ");
                     String composicion = scanner.nextLine();
-                    System.out.print("Ingrese el peso: ");
+                    System.out.print("Ingrese el peso (en gramos): ");
                     double peso = scanner.nextDouble();
-                    System.out.print("Ingrese el diámetro: ");
+                    System.out.print("Ingrese el diámetro (en milímetros): ");
                     double diametro = scanner.nextDouble();
-                    System.out.print("Ingrese el grosor: ");
+                    System.out.print("Ingrese el grosor (en milímetros): ");
                     double grosor = scanner.nextDouble();
                     scanner.nextLine(); // Consumir la nueva línea
                     System.out.print("Ingrese el estado de conservación (G, VG, F, VF, XF, AU, UNC): ");
