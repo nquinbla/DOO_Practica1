@@ -12,7 +12,7 @@ public class main {
         int opcion;
 
         do {
-            System.out.println("---------- MENÚ ----------");
+            System.out.println("--------------- MENÚ ---------------");
             System.out.println("Bienvenido al programa de colección de monedas y sellos.");
             System.out.println("(1). Añadir una nueva moneda");
             System.out.println("(2). Añadir un nuevo sello");
@@ -23,7 +23,7 @@ public class main {
             System.out.println("(0). Salir");
             System.out.print("Por favor, seleccione una opción: ");
             opcion = scanner.nextInt();
-            scanner.nextLine(); // Consumir la nueva línea
+            scanner.nextLine();
 
             switch (opcion) {
                 case 1:
