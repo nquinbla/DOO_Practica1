@@ -4,7 +4,7 @@ package Models;
 public class ElementoColeccionable {
     // [1] Atributos de la clase ElementoColeccionable
     private String pais;
-    private String autoridadGobernante;
+    private String autoridadGobernante; //
     private int annus;
     private double valor;
     private String unidadMonetaria;
