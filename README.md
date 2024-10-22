@@ -3,6 +3,10 @@
 ## ÍNDICE
 - [INTRODUCCIÓN](#introducción)
 - [CLASES DE LA APLICACIÓN](#clases-de-la-aplicación)
+  - [CLASE MONEDA](#clase-moneda)
+  - [CLASE SELLO](#clase-sello)
+  - [CLASE COLECCIÓN](#clase-colección)
+  - [CLASE MAIN](#clase-main)
 - [REQUISITOS DE ENTREGA](#requisitos-de-entrega)
 - [CRITERIOS DE EVALUACIÓN](#criterios-de-evaluación)
   
