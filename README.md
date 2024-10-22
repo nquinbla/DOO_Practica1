@@ -2,7 +2,10 @@
 
 ## ÍNDICE
 - [INTRODUCCIÓN](#introducción)
-- [
+- [CLASES DE LA APLICACIÓN](#clases-de-la-aplicación)
+- [REQUISITOS DE ENTREGA](#requesitos-de-entrega)
+- [CRITERIOS DE EVALUACIÓN](#criterios-de-evaluación)
+  
 
 
 
