@@ -14,13 +14,13 @@ public class main {
         do {
             System.out.println("---------- MENÚ ----------");
             System.out.println("Bienvenido al programa de colección de monedas y sellos.");
-            System.out.println("1). Añadir una nueva moneda");
-            System.out.println("2). Añadir un nuevo sello");
-            System.out.println("3). Mostrar todas las monedas");
-            System.out.println("4). Mostrar todos los sellos");
-            System.out.println("5). Mostrar el precio total de la colección");
-            System.out.println("6). Mostrar la rareza media de la colección");
-            System.out.println("0). Salir");
+            System.out.println("(1). Añadir una nueva moneda");
+            System.out.println("(2). Añadir un nuevo sello");
+            System.out.println("(3). Mostrar todas las monedas");
+            System.out.println("(4). Mostrar todos los sellos");
+            System.out.println("(5). Mostrar el precio total de la colección");
+            System.out.println("(6). Mostrar la rareza media de la colección");
+            System.out.println("(0). Salir");
             System.out.print("Por favor, seleccione una opción: ");
             opcion = scanner.nextInt();
             scanner.nextLine(); // Consumir la nueva línea
