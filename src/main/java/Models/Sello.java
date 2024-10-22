@@ -3,7 +3,7 @@ package Models;
 public class Sello extends ElementoColeccionable {
     private double altura; // Altura del sello en milímetros
     private double anchura; // Anchura del sello en milímetros
-    private String imagen; // URL de la imagen del sello
+    private String imagen; // Imagen del sello
     private EstadoConservacion estadoConservacion; // Estado de conservación del sello
 
     public Sello(String pais, String autoridadGobernante, int annus, double valor, String unidadMonetaria, int rareza, double precio,
