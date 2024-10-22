@@ -87,9 +87,13 @@ public class main {
                     coleccion.anadirSello(sello);
                     break;
                 case 3:
+                    System.out.println("--- Monedas ---");
+                    System.out.println("Lista de monedas guardadas:");
                     coleccion.mostrarMonedas();
                     break;
                 case 4:
+                    System.out.println("--- Sellos ---");
+                    System.out.println("Lista de sellos guardados:");
                     coleccion.mostrarSellos();
                     break;
                 case 5:
