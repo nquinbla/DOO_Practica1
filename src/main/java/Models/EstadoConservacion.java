@@ -1,6 +1,6 @@
 package Models;
 
-public enum EstadoConservacion {
+public enum    EstadoConservacion {
     G, VG, F, VF, XF, AU, UNC
 }
 /* Los estados de conservación de la moneda significan lo siguiente:
