@@ -58,10 +58,14 @@ public class main {
 
                     double valor;
                     do {
-                        System.out.print("Ingrese el valor: ");
+                        System.out.print("Ingrese el valor (en euros): ");
+                        while (!scanner.hasNextDouble()) {
+                            System.out.println("Entrada inválida. Por favor, ingrese un número.");
+                            scanner.next();
+                        }
                         valor = scanner.nextDouble();
                         if (valor < 0) {
-                            System.out.println("Valor inválido. Por favor, ingrese un valor no negativo.");
+                            System.out.println("Valor inválido. Por favor, ingrese un valor positivo.");
                         }
                     } while (valor < 0);
                     scanner.nextLine();
@@ -106,9 +110,13 @@ public class main {
                     double precio;
                     do {
                         System.out.print("Ingrese el precio: ");
+                        while (!scanner.hasNextDouble()) {
+                            System.out.println("Entrada inválida. Por favor, ingrese un número.");
+                            scanner.next();
+                        }
                         precio = scanner.nextDouble();
                         if (precio < 0) {
-                            System.out.println("Precio inválido. Por favor, ingrese un precio no negativo.");
+                            System.out.println("Precio inválido. Por favor, ingrese un precio positivo.");
                         }
                     } while (precio < 0);
                     scanner.nextLine();
@@ -131,7 +139,7 @@ public class main {
                         }
                         peso = scanner.nextDouble();
                         if (peso < 0) {
-                            System.out.println("Peso inválido. Por favor, ingrese un peso no negativo.");
+                            System.out.println("Peso inválido. Por favor, ingrese un peso positivo.");
                         }
                     } while (peso < 0);
                     scanner.nextLine();
@@ -145,7 +153,7 @@ public class main {
                         }
                         diametro = scanner.nextDouble();
                         if (diametro < 0) {
-                            System.out.println("Diámetro inválido. Por favor, ingrese un diámetro no negativo.");
+                            System.out.println("Diámetro inválido. Por favor, ingrese un diámetro positivo.");
                         }
                     } while (diametro < 0);
                     scanner.nextLine();
@@ -159,7 +167,7 @@ public class main {
                         }
                         grosor = scanner.nextDouble();
                         if (grosor < 0) {
-                            System.out.println("Grosor inválido. Por favor, ingrese un grosor no negativo.");
+                            System.out.println("Grosor inválido. Por favor, ingrese un grosor positivo.");
                         }
                     } while (grosor < 0);
                     scanner.nextLine();
@@ -173,7 +181,7 @@ public class main {
                             estadoConservacion = EstadoConservacion.valueOf(estadoInput);
                             estadoValido = true;
                         } catch (IllegalArgumentException e) {
-                            System.out.println("Estado de conservación inválido. Por favor, ingrese uno de los valores permitidos.");
+                            System.out.println("Estado de conservación inválido. Por favor, ingrese un estado válido.");
                         }
                     } while (!estadoValido);
 
@@ -181,7 +189,7 @@ public class main {
                     coleccion.anadirMoneda(moneda);
                     break;
 
-                case 2:
+                case 2: // [ Opción 2: Añadir un nuevo sello ]
                     System.out.println();
                     System.out.println("--- Añadir Sello ---");
                     System.out.println("A continuación, se le pedirá que ingrese los siguientes datos: país, autoridad gobernante, año, valor, unidad monetaria, rareza, precio, altura, anchura, imagen y estado de conservación.");
@@ -198,19 +206,23 @@ public class main {
                     String autoridadGobernanteSello = scanner.nextLine();
 
                     do {
-                        System.out.print("Ingrese el año (-700 a 2024): ");
+                        System.out.print("Ingrese el año (-700 a.C. a 2024 d.C.): ");
                         annus = scanner.nextInt();
                         if (annus < -700 || annus > 2024) {
-                            System.out.println("Año inválido. Por favor, ingrese un año entre -700 y 2024.");
+                            System.out.println("Año inválido. Por favor, ingrese un año entre el -700 y 2024.");
                         }
                     } while (annus < -700 || annus > 2024);
 
                     double valorSello;
                     do {
                         System.out.print("Ingrese el valor (en euros): ");
+                        while (!scanner.hasNextDouble()) {
+                            System.out.println("Entrada inválida. Por favor, ingrese un número.");
+                            scanner.next();
+                        }
                         valorSello = scanner.nextDouble();
                         if (valorSello < 0) {
-                            System.out.println("Valor inválido. Por favor, ingrese un valor no negativo.");
+                            System.out.println("Valor inválido. Por favor, ingrese un valor positivo.");
                         }
                     } while (valorSello < 0);
                     scanner.nextLine();
@@ -255,18 +267,43 @@ public class main {
                     double precioSello;
                     do {
                         System.out.print("Ingrese el precio (en euros): ");
+                        while (!scanner.hasNextDouble()) {
+                            System.out.println("Entrada inválida. Por favor, ingrese un número.");
+                            scanner.next();
+                        }
                         precioSello = scanner.nextDouble();
                         if (precioSello < 0) {
-                            System.out.println("Precio inválido. Por favor, ingrese un precio no negativo.");
+                            System.out.println("Precio inválido. Por favor, ingrese un precio positivo.");
                         }
                     } while (precioSello < 0);
                     scanner.nextLine();
 
-                    System.out.print("Ingrese la altura: ");
-                    double altura = scanner.nextDouble();
+                    double altura;
+                    do {
+                        System.out.print("Ingrese la altura (en milímetros): ");
+                        while (!scanner.hasNextDouble()) {
+                            System.out.println("Entrada inválida. Por favor, ingrese un número.");
+                            scanner.next();
+                        }
+                        altura = scanner.nextDouble();
+                        if (altura < 0) {
+                            System.out.println("Altura inválida. Por favor, ingrese una altura positiva.");
+                        }
+                    } while (altura < 0);
+                    scanner.nextLine();
 
-                    System.out.print("Ingrese la anchura: ");
-                    double anchura = scanner.nextDouble();
+                    double anchura;
+                    do {
+                        System.out.print("Ingrese la anchura (en milímetros): ");
+                        while (!scanner.hasNextDouble()) {
+                            System.out.println("Entrada inválida. Por favor, ingrese un número.");
+                            scanner.next();
+                        }
+                        anchura = scanner.nextDouble();
+                        if (anchura < 0) {
+                            System.out.println("Anchura inválida. Por favor, ingrese una anchura positiva.");
+                        }
+                    } while (anchura < 0);
                     scanner.nextLine();
 
                     System.out.print("Ingrese la imagen: ");
@@ -281,7 +318,7 @@ public class main {
                             estadoConservacionSello = EstadoConservacion.valueOf(estadoSelloInput);
                             estadoSelloValido = true;
                         } catch (IllegalArgumentException e) {
-                            System.out.println("Estado de conservación inválido. Por favor, ingrese uno de los valores permitidos.");
+                            System.out.println("Estado de conservación inválido. Por favor, ingrese un estado válido.");
                         }
                     } while (!estadoSelloValido);
 
