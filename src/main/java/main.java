@@ -54,7 +54,7 @@ public class main {
 
                     double valor; // Valor de la moneda
                     do {
-                        System.out.print("Ingrese el valor (en euros): ");
+                        System.out.print("Ingrese el valor (luego se especificará que tipo de valor): ");
                         while (!scanner.hasNextDouble()) {
                             System.out.println("Entrada inválida. Por favor, ingrese un número.");
                             scanner.next();
@@ -216,7 +216,7 @@ public class main {
 
                     double valorSello; // Valor del sello
                     do {
-                        System.out.print("Ingrese el valor (en euros): ");
+                        System.out.print("Ingrese el valor (luego se especificará que tipo de valor): ");
                         while (!scanner.hasNextDouble()) {
                             System.out.println("Entrada inválida. Por favor, ingrese un número.");
                             scanner.next();
@@ -239,7 +239,7 @@ public class main {
                         }
                     } while (!respuestaSello.equals("sí") && !respuestaSello.equals("no"));
 
-                    String unidadMonetariaSello; // Unidad monetaria del sello [?]
+                    String unidadMonetariaSello; // Unidad monetaria del sello
                     do {
                         System.out.print("Ingrese la unidad monetaria: ");
                         unidadMonetariaSello = scanner.nextLine();
