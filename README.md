@@ -82,7 +82,7 @@ En esta clase, se almacenarán todos los elementos de la colección dentro del m
 ***
 
 ### CLASE MAIN
-En la clase main se mostrará el menú interactivo por la consola, mediante el cual podremos interactuar con
+En la clase Main se mostrará el menú interactivo por la consola, mediante el cual podremos interactuar con
 la aplicación. Las opciones que se mostrarán al usuario son las siguientes:
 > 1. Añadir una nueva moneda
 > 2. Añadir un nuevo sello
