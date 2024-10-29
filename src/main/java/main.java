@@ -2,7 +2,11 @@ import Models.Coleccion;
 import Models.EstadoConservacion;
 import Models.Moneda;
 import Models.Sello;
+import ModelsAditivos.PaisesValidos;
+import ModelsAditivos.UnidadesMonetariasValidas;
+import ModelsAditivos.AleacionesValidas;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class main {
@@ -27,86 +31,295 @@ public class main {
 
             switch (opcion) {
                 case 1:
-                    System.out.print("Ingrese el país: ");
-                    String pais = scanner.nextLine();
+                    System.out.println();
+                    System.out.println("--- Añadir Moneda ---");
+                    System.out.println("A continuación, se le pedirá que ingrese los siguientes datos: país, autoridad gobernante, año, valor, unidad monetaria, rareza, precio, composición, peso, diámetro, grosor y estado de conservación.");
+
+                    String pais;
+                    do {
+                        System.out.print("Ingrese el país: ");
+                        pais = scanner.nextLine();
+                        if (!PaisesValidos.esPaisValido(pais)) {
+                            System.out.println("País equivocado. Por favor, ingrese un país válido.");
+                        }
+                    } while (!PaisesValidos.esPaisValido(pais));
+
                     System.out.print("Ingrese la autoridad gobernante: ");
                     String autoridadGobernante = scanner.nextLine();
-                    System.out.print("Ingrese el año: ");
-                    int annus = scanner.nextInt();
-                    System.out.print("Ingrese el valor: ");
-                    double valor = scanner.nextDouble();
-                    scanner.nextLine(); // Consumir la nueva línea
-                    System.out.print("Ingrese la unidad monetaria: ");
-                    String unidadMonetaria = scanner.nextLine();
-                    System.out.print("Ingrese la rareza (1-100): ");
-                    int rareza = scanner.nextInt();
-                    System.out.print("Ingrese el precio: ");
-                    double precio = scanner.nextDouble();
-                    scanner.nextLine(); // Consumir la nueva línea
-                    System.out.print("Ingrese la composición o aleación: ");
-                    String composicion = scanner.nextLine();
-                    System.out.print("Ingrese el peso (en gramos): ");
-                    double peso = scanner.nextDouble();
-                    System.out.print("Ingrese el diámetro (en milímetros): ");
-                    double diametro = scanner.nextDouble();
-                    System.out.print("Ingrese el grosor (en milímetros): ");
-                    double grosor = scanner.nextDouble();
-                    scanner.nextLine(); // Consumir la nueva línea
-                    System.out.print("Ingrese el estado de conservación (G, VG, F, VF, XF, AU, UNC): ");
-                    EstadoConservacion estadoConservacion = EstadoConservacion.valueOf(scanner.nextLine());
+
+                    int annus;
+                    do {
+                        System.out.print("Ingrese el año (-700 a.C. a 2024 d.C.): ");
+                        annus = scanner.nextInt();
+                        if (annus < -700 || annus > 2024) {
+                            System.out.println("Año inválido. Por favor, ingrese un año entre el -700 y 2024.");
+                        }
+                    } while (annus < -700 || annus > 2024);
+
+                    double valor;
+                    do {
+                        System.out.print("Ingrese el valor: ");
+                        valor = scanner.nextDouble();
+                        if (valor < 0) {
+                            System.out.println("Valor inválido. Por favor, ingrese un valor no negativo.");
+                        }
+                    } while (valor < 0);
+                    scanner.nextLine();
+
+                    boolean esAntigua;
+                    String respuesta;
+                    do {
+                        System.out.print("¿Es una moneda antigua? (sí/no): ");
+                        respuesta = scanner.nextLine().trim().toLowerCase();
+                        esAntigua = respuesta.equals("sí");
+                        if (!respuesta.equals("sí") && !respuesta.equals("no")) {
+                            System.out.println("Respuesta inválida. Por favor, responda 'sí' o 'no'.");
+                        }
+                    } while (!respuesta.equals("sí") && !respuesta.equals("no"));
+
+                    String unidadMonetaria;
+                    do {
+                        System.out.print("Ingrese la unidad monetaria: ");
+                        unidadMonetaria = scanner.nextLine();
+                        if (!UnidadesMonetariasValidas.esUnidadMonetariaValida(unidadMonetaria, esAntigua)) {
+                            System.out.println("Unidad monetaria inválida. Por favor, ingrese una unidad monetaria válida.");
+                        }
+                    } while (!UnidadesMonetariasValidas.esUnidadMonetariaValida(unidadMonetaria, esAntigua));
+
+                    int rareza = 0;
+                    boolean rarezaValida = false;
+                    do {
+                        System.out.print("Ingrese la rareza (1-100, siendo 1 lo menos raro y 100 lo más raro): ");
+                        String rarezaInput = scanner.nextLine().trim();
+                        try {
+                            rareza = Integer.parseInt(rarezaInput);
+                            if (rareza >= 1 && rareza <= 100) {
+                                rarezaValida = true;
+                            } else {
+                                System.out.println("Rareza inválida. Por favor, ingrese un número entre 1 y 100.");
+                            }
+                        } catch (NumberFormatException e) {
+                            System.out.println("Entrada inválida. Por favor, ingrese un número entre 1 y 100.");
+                        }
+                    } while (!rarezaValida);
+
+                    double precio;
+                    do {
+                        System.out.print("Ingrese el precio: ");
+                        precio = scanner.nextDouble();
+                        if (precio < 0) {
+                            System.out.println("Precio inválido. Por favor, ingrese un precio no negativo.");
+                        }
+                    } while (precio < 0);
+                    scanner.nextLine();
+
+                    String composicion;
+                    do {
+                        System.out.print("Ingrese la composición o aleación: ");
+                        composicion = scanner.nextLine();
+                        if (!AleacionesValidas.esAleacionValida(composicion)) {
+                            System.out.println("Composición inválida. Por favor, ingrese una aleación válida.");
+                        }
+                    } while (!AleacionesValidas.esAleacionValida(composicion));
+
+                    double peso;
+                    do {
+                        System.out.print("Ingrese el peso (en gramos): ");
+                        while (!scanner.hasNextDouble()) {
+                            System.out.println("Entrada inválida. Por favor, ingrese un número.");
+                            scanner.next();
+                        }
+                        peso = scanner.nextDouble();
+                        if (peso < 0) {
+                            System.out.println("Peso inválido. Por favor, ingrese un peso no negativo.");
+                        }
+                    } while (peso < 0);
+                    scanner.nextLine();
+
+                    double diametro;
+                    do {
+                        System.out.print("Ingrese el diámetro (en milímetros): ");
+                        while (!scanner.hasNextDouble()) {
+                            System.out.println("Entrada inválida. Por favor, ingrese un número.");
+                            scanner.next();
+                        }
+                        diametro = scanner.nextDouble();
+                        if (diametro < 0) {
+                            System.out.println("Diámetro inválido. Por favor, ingrese un diámetro no negativo.");
+                        }
+                    } while (diametro < 0);
+                    scanner.nextLine();
+
+                    double grosor;
+                    do {
+                        System.out.print("Ingrese el grosor (en milímetros): ");
+                        while (!scanner.hasNextDouble()) {
+                            System.out.println("Entrada inválida. Por favor, ingrese un número.");
+                            scanner.next();
+                        }
+                        grosor = scanner.nextDouble();
+                        if (grosor < 0) {
+                            System.out.println("Grosor inválido. Por favor, ingrese un grosor no negativo.");
+                        }
+                    } while (grosor < 0);
+                    scanner.nextLine();
+
+                    EstadoConservacion estadoConservacion = null;
+                    boolean estadoValido = false;
+                    do {
+                        System.out.print("Ingrese el estado de conservación (G, VG, F, VF, XF, AU, UNC): ");
+                        String estadoInput = scanner.nextLine().trim().toUpperCase();
+                        try {
+                            estadoConservacion = EstadoConservacion.valueOf(estadoInput);
+                            estadoValido = true;
+                        } catch (IllegalArgumentException e) {
+                            System.out.println("Estado de conservación inválido. Por favor, ingrese uno de los valores permitidos.");
+                        }
+                    } while (!estadoValido);
+
                     Moneda moneda = new Moneda(pais, autoridadGobernante, annus, valor, unidadMonetaria, rareza, precio, composicion, peso, diametro, grosor, estadoConservacion);
                     coleccion.anadirMoneda(moneda);
                     break;
+
                 case 2:
-                    System.out.print("Ingrese el país: ");
-                    pais = scanner.nextLine();
+                    System.out.println();
+                    System.out.println("--- Añadir Sello ---");
+                    System.out.println("A continuación, se le pedirá que ingrese los siguientes datos: país, autoridad gobernante, año, valor, unidad monetaria, rareza, precio, altura, anchura, imagen y estado de conservación.");
+
+                    do {
+                        System.out.print("Ingrese el país: ");
+                        pais = scanner.nextLine();
+                        if (!PaisesValidos.esPaisValido(pais)) {
+                            System.out.println("País equivocado. Por favor, ingrese un país válido.");
+                        }
+                    } while (!PaisesValidos.esPaisValido(pais));
+
                     System.out.print("Ingrese la autoridad gobernante: ");
-                    autoridadGobernante = scanner.nextLine();
-                    System.out.print("Ingrese el año: ");
-                    annus = scanner.nextInt();
-                    System.out.print("Ingrese el valor: ");
-                    valor = scanner.nextDouble();
-                    scanner.nextLine(); // Consumir la nueva línea
-                    System.out.print("Ingrese la unidad monetaria: ");
-                    unidadMonetaria = scanner.nextLine();
-                    System.out.print("Ingrese la rareza (1-100): ");
-                    rareza = scanner.nextInt();
-                    System.out.print("Ingrese el precio: ");
-                    precio = scanner.nextDouble();
-                    scanner.nextLine(); // Consumir la nueva línea
+                    String autoridadGobernanteSello = scanner.nextLine();
+
+                    do {
+                        System.out.print("Ingrese el año (-700 a 2024): ");
+                        annus = scanner.nextInt();
+                        if (annus < -700 || annus > 2024) {
+                            System.out.println("Año inválido. Por favor, ingrese un año entre -700 y 2024.");
+                        }
+                    } while (annus < -700 || annus > 2024);
+
+                    double valorSello;
+                    do {
+                        System.out.print("Ingrese el valor (en euros): ");
+                        valorSello = scanner.nextDouble();
+                        if (valorSello < 0) {
+                            System.out.println("Valor inválido. Por favor, ingrese un valor no negativo.");
+                        }
+                    } while (valorSello < 0);
+                    scanner.nextLine();
+
+                    boolean esAntiguaSello;
+                    String respuestaSello;
+                    do {
+                        System.out.print("¿Es una moneda antigua? (sí/no): ");
+                        respuestaSello = scanner.nextLine().trim().toLowerCase();
+                        esAntiguaSello = respuestaSello.equals("sí");
+                        if (!respuestaSello.equals("sí") && !respuestaSello.equals("no")) {
+                            System.out.println("Respuesta inválida. Por favor, responda 'sí' o 'no'.");
+                        }
+                    } while (!respuestaSello.equals("sí") && !respuestaSello.equals("no"));
+
+                    String unidadMonetariaSello;
+                    do {
+                        System.out.print("Ingrese la unidad monetaria: ");
+                        unidadMonetariaSello = scanner.nextLine();
+                        if (!UnidadesMonetariasValidas.esUnidadMonetariaValida(unidadMonetariaSello, esAntiguaSello)) {
+                            System.out.println("Unidad monetaria inválida. Por favor, ingrese una unidad monetaria válida.");
+                        }
+                    } while (!UnidadesMonetariasValidas.esUnidadMonetariaValida(unidadMonetariaSello, esAntiguaSello));
+
+                    int rarezaSello = 0;
+                    boolean rarezaSelloValida = false;
+                    do {
+                        System.out.print("Ingrese la rareza (1-100, siendo 1 lo menos raro y 100 lo más raro): ");
+                        String rarezaSelloInput = scanner.nextLine().trim();
+                        try {
+                            rarezaSello = Integer.parseInt(rarezaSelloInput);
+                            if (rarezaSello >= 1 && rarezaSello <= 100) {
+                                rarezaSelloValida = true;
+                            } else {
+                                System.out.println("Rareza inválida. Por favor, ingrese un número entre 1 y 100.");
+                            }
+                        } catch (NumberFormatException e) {
+                            System.out.println("Entrada inválida. Por favor, ingrese un número entre 1 y 100.");
+                        }
+                    } while (!rarezaSelloValida);
+
+                    double precioSello;
+                    do {
+                        System.out.print("Ingrese el precio (en euros): ");
+                        precioSello = scanner.nextDouble();
+                        if (precioSello < 0) {
+                            System.out.println("Precio inválido. Por favor, ingrese un precio no negativo.");
+                        }
+                    } while (precioSello < 0);
+                    scanner.nextLine();
+
                     System.out.print("Ingrese la altura: ");
                     double altura = scanner.nextDouble();
+
                     System.out.print("Ingrese la anchura: ");
                     double anchura = scanner.nextDouble();
-                    scanner.nextLine(); // Consumir la nueva línea
+                    scanner.nextLine();
+
                     System.out.print("Ingrese la imagen: ");
                     String imagen = scanner.nextLine();
-                    System.out.print("Ingrese el estado de conservación (U, NSG, NF, N): ");
-                    estadoConservacion = EstadoConservacion.valueOf(scanner.nextLine());
-                    Sello sello = new Sello(pais, autoridadGobernante, annus, valor, unidadMonetaria, rareza, precio, altura, anchura, imagen, estadoConservacion);
+
+                    EstadoConservacion estadoConservacionSello = null;
+                    boolean estadoSelloValido = false;
+                    do {
+                        System.out.print("Ingrese el estado de conservación (U, NSG, NF, N): ");
+                        String estadoSelloInput = scanner.nextLine().trim().toUpperCase();
+                        try {
+                            estadoConservacionSello = EstadoConservacion.valueOf(estadoSelloInput);
+                            estadoSelloValido = true;
+                        } catch (IllegalArgumentException e) {
+                            System.out.println("Estado de conservación inválido. Por favor, ingrese uno de los valores permitidos.");
+                        }
+                    } while (!estadoSelloValido);
+
+                    Sello sello = new Sello(pais, autoridadGobernanteSello, annus, valorSello, unidadMonetariaSello, rarezaSello, precioSello, altura, anchura, imagen, estadoConservacionSello);
                     coleccion.anadirSello(sello);
                     break;
+
                 case 3:
+                    System.out.println();
                     System.out.println("--- Monedas ---");
                     System.out.println("Lista de monedas guardadas:");
                     coleccion.mostrarMonedas();
                     break;
+
                 case 4:
+                    System.out.println();
                     System.out.println("--- Sellos ---");
                     System.out.println("Lista de sellos guardados:");
                     coleccion.mostrarSellos();
                     break;
+
                 case 5:
+                    System.out.println();
                     System.out.println("--- Precio Colección ---");
                     System.out.println("El precio total de la colección es de: " + coleccion.obtenerPrecioTotal());
                     break;
+
                 case 6:
+                    System.out.println();
                     System.out.println("--- Rareza Media ---");
                     System.out.println("La rareza media de la colección es de: " + coleccion.obtenerRarezaMedia());
                     break;
+
                 case 0:
+                    System.out.println();
                     System.out.println("Saliendo del programa...");
                     break;
+
                 default:
                     System.out.println("Opción no válida. Por favor, intentelo de nuevo.");
             }
