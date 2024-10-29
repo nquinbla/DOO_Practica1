@@ -1,12 +1,8 @@
 import Models.Coleccion;
-import Models.EstadoConservacion;
+import ModelsAditivos.*;
 import Models.Moneda;
 import Models.Sello;
-import ModelsAditivos.PaisesValidos;
-import ModelsAditivos.UnidadesMonetariasValidas;
-import ModelsAditivos.AleacionesValidas;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class main {
@@ -29,13 +25,13 @@ public class main {
             opcion = scanner.nextInt();
             scanner.nextLine();
 
-            switch (opcion) {
+            switch (opcion) { // [ Opción 1: Añadir una nueva moneda ]
                 case 1:
                     System.out.println();
                     System.out.println("--- Añadir Moneda ---");
                     System.out.println("A continuación, se le pedirá que ingrese los siguientes datos: país, autoridad gobernante, año, valor, unidad monetaria, rareza, precio, composición, peso, diámetro, grosor y estado de conservación.");
 
-                    String pais;
+                    String pais; // País de la moneda
                     do {
                         System.out.print("Ingrese el país: ");
                         pais = scanner.nextLine();
@@ -44,10 +40,10 @@ public class main {
                         }
                     } while (!PaisesValidos.esPaisValido(pais));
 
-                    System.out.print("Ingrese la autoridad gobernante: ");
+                    System.out.print("Ingrese la autoridad gobernante: "); // Autoridad gobernante de la moneda
                     String autoridadGobernante = scanner.nextLine();
 
-                    int annus;
+                    int annus; // Año de la moneda
                     do {
                         System.out.print("Ingrese el año (-700 a.C. a 2024 d.C.): ");
                         annus = scanner.nextInt();
@@ -56,7 +52,7 @@ public class main {
                         }
                     } while (annus < -700 || annus > 2024);
 
-                    double valor;
+                    double valor; // Valor de la moneda
                     do {
                         System.out.print("Ingrese el valor (en euros): ");
                         while (!scanner.hasNextDouble()) {
@@ -70,7 +66,7 @@ public class main {
                     } while (valor < 0);
                     scanner.nextLine();
 
-                    boolean esAntigua;
+                    boolean esAntigua; // Si la moneda es antigua o no
                     String respuesta;
                     do {
                         System.out.print("¿Es una moneda antigua? (sí/no): ");
@@ -81,7 +77,7 @@ public class main {
                         }
                     } while (!respuesta.equals("sí") && !respuesta.equals("no"));
 
-                    String unidadMonetaria;
+                    String unidadMonetaria; // Unidad monetaria de la moneda
                     do {
                         System.out.print("Ingrese la unidad monetaria: ");
                         unidadMonetaria = scanner.nextLine();
@@ -90,7 +86,7 @@ public class main {
                         }
                     } while (!UnidadesMonetariasValidas.esUnidadMonetariaValida(unidadMonetaria, esAntigua));
 
-                    int rareza = 0;
+                    int rareza = 0; // Rareza de la moneda
                     boolean rarezaValida = false;
                     do {
                         System.out.print("Ingrese la rareza (1-100, siendo 1 lo menos raro y 100 lo más raro): ");
@@ -107,7 +103,7 @@ public class main {
                         }
                     } while (!rarezaValida);
 
-                    double precio;
+                    double precio; // Precio de la moneda
                     do {
                         System.out.print("Ingrese el precio: ");
                         while (!scanner.hasNextDouble()) {
@@ -121,7 +117,7 @@ public class main {
                     } while (precio < 0);
                     scanner.nextLine();
 
-                    String composicion;
+                    String composicion; // Composición de la moneda
                     do {
                         System.out.print("Ingrese la composición o aleación: ");
                         composicion = scanner.nextLine();
@@ -130,7 +126,7 @@ public class main {
                         }
                     } while (!AleacionesValidas.esAleacionValida(composicion));
 
-                    double peso;
+                    double peso; // Peso de la moneda
                     do {
                         System.out.print("Ingrese el peso (en gramos): ");
                         while (!scanner.hasNextDouble()) {
@@ -144,7 +140,7 @@ public class main {
                     } while (peso < 0);
                     scanner.nextLine();
 
-                    double diametro;
+                    double diametro; // Diámetro de la moneda
                     do {
                         System.out.print("Ingrese el diámetro (en milímetros): ");
                         while (!scanner.hasNextDouble()) {
@@ -158,7 +154,7 @@ public class main {
                     } while (diametro < 0);
                     scanner.nextLine();
 
-                    double grosor;
+                    double grosor; // Grosor de la moneda
                     do {
                         System.out.print("Ingrese el grosor (en milímetros): ");
                         while (!scanner.hasNextDouble()) {
@@ -172,7 +168,7 @@ public class main {
                     } while (grosor < 0);
                     scanner.nextLine();
 
-                    EstadoConservacion estadoConservacion = null;
+                    EstadoConservacion estadoConservacion = null; // Estado de conservación de la moneda
                     boolean estadoValido = false;
                     do {
                         System.out.print("Ingrese el estado de conservación (G, VG, F, VF, XF, AU, UNC): ");
@@ -195,25 +191,30 @@ public class main {
                     System.out.println("A continuación, se le pedirá que ingrese los siguientes datos: país, autoridad gobernante, año, valor, unidad monetaria, rareza, precio, altura, anchura, imagen y estado de conservación.");
 
                     do {
-                        System.out.print("Ingrese el país: ");
+                        System.out.print("Ingrese el país: "); // País del sello
                         pais = scanner.nextLine();
                         if (!PaisesValidos.esPaisValido(pais)) {
                             System.out.println("País equivocado. Por favor, ingrese un país válido.");
                         }
                     } while (!PaisesValidos.esPaisValido(pais));
 
-                    System.out.print("Ingrese la autoridad gobernante: ");
+                    System.out.print("Ingrese la autoridad gobernante: "); // Autoridad gobernante del sello
                     String autoridadGobernanteSello = scanner.nextLine();
 
-                    do {
+                    do { // Año del sello
                         System.out.print("Ingrese el año (-700 a.C. a 2024 d.C.): ");
+                        while (!scanner.hasNextInt()) {
+                            System.out.println("Entrada inválida. Por favor, ingrese un año válido.");
+                            scanner.next();
+                        }
                         annus = scanner.nextInt();
                         if (annus < -700 || annus > 2024) {
                             System.out.println("Año inválido. Por favor, ingrese un año entre el -700 y 2024.");
                         }
                     } while (annus < -700 || annus > 2024);
+                    scanner.nextLine();
 
-                    double valorSello;
+                    double valorSello; // Valor del sello
                     do {
                         System.out.print("Ingrese el valor (en euros): ");
                         while (!scanner.hasNextDouble()) {
@@ -227,7 +228,7 @@ public class main {
                     } while (valorSello < 0);
                     scanner.nextLine();
 
-                    boolean esAntiguaSello;
+                    boolean esAntiguaSello; // Si el sello es antiguo o no
                     String respuestaSello;
                     do {
                         System.out.print("¿Es una moneda antigua? (sí/no): ");
@@ -238,7 +239,7 @@ public class main {
                         }
                     } while (!respuestaSello.equals("sí") && !respuestaSello.equals("no"));
 
-                    String unidadMonetariaSello;
+                    String unidadMonetariaSello; // Unidad monetaria del sello [?]
                     do {
                         System.out.print("Ingrese la unidad monetaria: ");
                         unidadMonetariaSello = scanner.nextLine();
@@ -247,7 +248,7 @@ public class main {
                         }
                     } while (!UnidadesMonetariasValidas.esUnidadMonetariaValida(unidadMonetariaSello, esAntiguaSello));
 
-                    int rarezaSello = 0;
+                    int rarezaSello = 0; // Rareza del sello
                     boolean rarezaSelloValida = false;
                     do {
                         System.out.print("Ingrese la rareza (1-100, siendo 1 lo menos raro y 100 lo más raro): ");
@@ -264,7 +265,7 @@ public class main {
                         }
                     } while (!rarezaSelloValida);
 
-                    double precioSello;
+                    double precioSello; // Precio del sello
                     do {
                         System.out.print("Ingrese el precio (en euros): ");
                         while (!scanner.hasNextDouble()) {
@@ -278,7 +279,7 @@ public class main {
                     } while (precioSello < 0);
                     scanner.nextLine();
 
-                    double altura;
+                    double altura; // Altura del sello
                     do {
                         System.out.print("Ingrese la altura (en milímetros): ");
                         while (!scanner.hasNextDouble()) {
@@ -292,7 +293,7 @@ public class main {
                     } while (altura < 0);
                     scanner.nextLine();
 
-                    double anchura;
+                    double anchura; // Anchura del sello
                     do {
                         System.out.print("Ingrese la anchura (en milímetros): ");
                         while (!scanner.hasNextDouble()) {
@@ -306,16 +307,16 @@ public class main {
                     } while (anchura < 0);
                     scanner.nextLine();
 
-                    System.out.print("Ingrese la imagen: ");
+                    System.out.print("Ingrese la imagen: "); // Imagen del sello
                     String imagen = scanner.nextLine();
 
-                    EstadoConservacion estadoConservacionSello = null;
+                    EstadoConservacionSello estadoConservacionSello = null; // Estado de conservación del sello
                     boolean estadoSelloValido = false;
                     do {
                         System.out.print("Ingrese el estado de conservación (U, NSG, NF, N): ");
                         String estadoSelloInput = scanner.nextLine().trim().toUpperCase();
                         try {
-                            estadoConservacionSello = EstadoConservacion.valueOf(estadoSelloInput);
+                            estadoConservacionSello = new EstadoConservacionSello(EstadoConservacionSello.Estado.valueOf(estadoSelloInput));
                             estadoSelloValido = true;
                         } catch (IllegalArgumentException e) {
                             System.out.println("Estado de conservación inválido. Por favor, ingrese un estado válido.");

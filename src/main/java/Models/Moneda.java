@@ -40,4 +40,24 @@ public class Moneda extends ElementoColeccionable {
     public void setDiametro(double diametro) { this.diametro = diametro; }
     public void setGrosor(double grosor) { this.grosor = grosor; }
     public void setEstadoConservacion(EstadoConservacion estadoConservacion) { this.estadoConservacion = estadoConservacion; }
+
+
+    @Override
+    public String toString() {
+        return "Moneda{" +
+                "composicion='" + composicion + '\'' +
+                ", peso=" + peso +
+                ", diametro=" + diametro +
+                ", grosor=" + grosor +
+                ", estadoConservacion=" + estadoConservacion +
+                ", pais='" + getPais() + '\'' +
+                ", autoridadGobernante='" + getAutoridadGobernante() + '\'' +
+                ", annus=" + getAnnus() +
+                ", valor=" + getValor() +
+                ", unidadMonetaria='" + getUnidadMonetaria() + '\'' +
+                ", rareza=" + getRareza() +
+                ", precio=" + getPrecio() +
+                '}';
+    }
+
 }
