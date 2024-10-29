@@ -44,19 +44,19 @@ public class Moneda extends ElementoColeccionable {
 
     @Override
     public String toString() {
-        return "Moneda{" +
-                "composicion='" + composicion + '\'' +
-                ", peso=" + peso +
-                ", diametro=" + diametro +
-                ", grosor=" + grosor +
-                ", estadoConservacion=" + estadoConservacion +
-                ", pais='" + getPais() + '\'' +
-                ", autoridadGobernante='" + getAutoridadGobernante() + '\'' +
-                ", annus=" + getAnnus() +
-                ", valor=" + getValor() +
-                ", unidadMonetaria='" + getUnidadMonetaria() + '\'' +
-                ", rareza=" + getRareza() +
-                ", precio=" + getPrecio() +
+        return "Moneda {" +
+                "Composición ='" + composicion + '\'' +
+                ", Peso =" + peso +
+                ", Diametro =" + diametro +
+                ", Grosor =" + grosor +
+                ", Estado conservación =" + estadoConservacion +
+                ", País ='" + getPais() + '\'' +
+                ", Autoridad gobernante ='" + getAutoridadGobernante() + '\'' +
+                ", Año =" + getAnnus() +
+                ", Valor =" + getValor() +
+                ", Unidad monetaria ='" + getUnidadMonetaria() + '\'' +
+                ", Rareza =" + getRareza() +
+                ", Precio =" + getPrecio() +
                 '}';
     }
 
