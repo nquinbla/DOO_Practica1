@@ -1,4 +1,7 @@
 # [ DOO ] PRÁCTICA 1
+Practica 1 de Nerea Quintanilla Blanco en la asignatura de Desarrollo Orientado a Objetos.
+
+* Link -> https://github.com/nquinbla/DOO_Practica1.git
 
 ## ÍNDICE
 - [INTRODUCCIÓN](#introducción)
