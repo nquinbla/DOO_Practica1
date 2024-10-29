@@ -1,5 +1,7 @@
 package Models;
 
+import ModelsAditivos.EstadoConservacion;
+
 // Clase Sello que extiende ElementoColeccionable -> representa un sello coleccionable con atributos específicos de su naturaleza
 public class Sello extends ElementoColeccionable {
     // [1] Atributos de la clase Sello -> Definen las características específicas de un sello coleccionable

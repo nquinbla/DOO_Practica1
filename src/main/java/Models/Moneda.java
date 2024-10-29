@@ -1,5 +1,7 @@
 package Models;
 
+import ModelsAditivos.EstadoConservacion;
+
 // Clase Moneda que extiende ElementoColeccionable -> representa una moneda con atributos adicionales específicos de su naturaleza
 public class Moneda extends ElementoColeccionable {
     // [1] Atributos de la clase Moneda -> Definen las características específicas de una moneda coleccionable
