@@ -1,7 +1,7 @@
 package Models;
 
-
-public class ElementoColeccionable {
+// imp: abstratc
+public abstract class  ElementoColeccionable {
     // [1] Atributos de la clase ElementoColeccionable
     private String pais;
     private String autoridadGobernante; //
